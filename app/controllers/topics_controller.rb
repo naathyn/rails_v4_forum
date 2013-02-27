@@ -30,7 +30,7 @@ class TopicsController < ApplicationController
 private
 
   def set_board
-    @board = Board.find(board_params)
+    @board = Board.find(params[:board_id])
   end
 
   def topic_params
@@ -40,10 +40,6 @@ private
       :views,
       :board_id
     )
-  end
-
-  def board_params
-    params[:board_id]
   end
 
 protected

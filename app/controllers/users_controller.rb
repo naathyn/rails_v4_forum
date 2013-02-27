@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :correct_user, only: [:edit, :update]
 
   def index
-    @users = User.page(page_params)
+    @users = User.page(params[:page])
   end
 
   def new
@@ -47,10 +47,6 @@ private
       :password,
       :password_confirmation
     )
-  end
-
-  def page_params
-    params[:page]
   end
 
 protected

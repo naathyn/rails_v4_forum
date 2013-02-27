@@ -1,0 +1,19 @@
+<legend> New Topic </legend>
+
+<div class="row-fluid">
+  <div class="span6 offset3">
+
+    <%= form_for([:board, @topic]) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+
+        <%= f.text_area :content, rows: 8 %>
+
+      <%= f.submit "Post", class: "btn btn-large btn-success" %>
+
+    <% end %>
+
+  </div>
+</div>

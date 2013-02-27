@@ -1,0 +1,24 @@
+<%= link_to "Back", board_path(@topic.board) %>
+
+  <% if current_user?(@topic.user) %>
+    <%= link_to "Remove", [@topic.board, @topic], method: :delete,
+        data: { confirm: "Are you sure you want to delete this?" },
+      title: @topic.title, class: "btn btn-danger pull-right",
+    style: "margin-bottom: 5px;" %>
+  <% end %>
+
+  <div class="well-header" style="text-align:left; clear:both;">
+    "<%= @topic.title %>" started by  
+    <%= @topic.user.username %> 
+    <%= time_ago_in_words(@topic.created_at) %> ago
+  </div>
+
+  <div class="well well-inner">
+    <span class="user"><%= gravatar_for @topic.user %></span>
+    <span class="content"><%= @topic.content %></span>
+  </div>
+
+  <%= render @topic.comments unless @topic.comments.empty? %>
+
+  <div class="well-bottom">
+</div>

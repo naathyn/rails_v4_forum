@@ -1,0 +1,20 @@
+<tr>
+  <td>
+    <span class="user"><%= link_to board.name, board_path(board) %></span>
+    <div class="categories well-footer small"><%= board.description %></div>
+  </td>
+  <td class="center small valign"><%= board.topics.count %></td>
+  <td class="center small valign"><%= board.posts %></td>
+  <td class="small">
+    <% unless board.topics.empty? %>
+      <div class="user">
+        <%= link_to board.latest_topic.title, topic_path([board, :topics, board.latest_topic]) %>
+      </div>
+      by
+      <span class="user">
+        <%= link_to board.latest_post.user.username, board.latest_post.user %>
+      </span> <br />
+      » <%= time_ago_in_words(board.active_post.updated_at) %> ago.
+    <% end %>
+  </td>
+</tr>

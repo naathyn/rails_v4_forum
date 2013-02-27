@@ -1,0 +1,1006 @@
+/*
+ * Styles taken from my social app Ampersand
+ * https://github.com/naathyn/Ampersand
+ * https://rubyrails.herokuapp.com
+*/
+
+@import "bootstrap";
+@import "mixins";
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+$linkColor: darken($red, 5%);
+$linkColorHover: lighten($linkColor, 15%);
+
+/* global configurations */
+
+html { 
+  overflow-y: scroll; 
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-image: url(image_path('bg.png'));
+  font-family: 'Lato', "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+  padding-top: 60px;
+  height: 100%;
+  min-width: 365px;
+}
+
+@import 'bootstrap-responsive';
+
+a {
+  color: $linkColor;
+  @include transitions;
+  &:hover {
+  text-decoration: none;
+  color: $linkColorHover;
+  }
+}
+
+input,
+textarea,
+select,
+.uneditable-input {
+  border: 1px solid $inputBorder;
+  width: 100%;
+  padding: 10px;
+  height: auto !important;
+  margin-bottom: 10px;
+  display: inline-block;
+  @include forms;
+}
+
+textarea {
+  resize: none; 
+}
+
+section { 
+  overflow: auto; 
+}
+
+a:focus {
+  outline: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  color: inherit;
+  text-rendering: optimizeLegibility;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 20px;
+}
+
+h2 small {
+  font-size: 12px;
+  font-weight: normal;
+  color: $statsGray;
+}
+
+h3 {
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1;
+}
+
+h4 {
+  font-size: 12px;
+  line-height: 18px;
+}
+
+h5, 
+h6 { 
+  font-size: 11px; 
+}
+
+p { 
+  margin: 0px 0px 10px; 
+}
+
+small { 
+  font-size: 12px; 
+}
+
+ul, 
+ol, 
+li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+footer {
+  clear: both;
+  margin: 0px auto;
+  max-width: 880px;
+  padding: 1em;
+  border: 1px solid $userBorder;
+  color: $grayLight;
+  text-shadow: 0px 1px 1px white;
+  @include footer;
+}
+
+footer .container {
+  width: auto;
+  a { 
+    color: $linkColor; 
+    &:hover { 
+      color: $linkColorHover;
+    } 
+  }
+}
+
+aside {
+  section {
+    border-top: 1px solid $border;
+    padding: 10px 0;
+    &:first-child {
+      border: 0;
+      padding-top: 0;
+    }
+    span {
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1;
+    }
+  }
+}
+
+/* Page Layout */
+
+.page-wrapper {
+  background-image: url(image_path('wrapper.png'));
+  border: 1px solid $userBorder;
+  text-shadow: 0px 1px 1px white;
+  border-bottom-width: 0;
+  min-height: 100%;
+  max-width: 880px;
+  margin: -1.4em auto;
+  padding: 2.5em 1em;
+}
+
+.navbar-inverse { 
+  @include navbar;
+  margin-right: 0px;
+}
+
+.navbar-fixed-top .navbar-inner {
+  border: 1px solid $textGray;
+  padding: 0;
+}
+
+.navbar-inverse .navbar-inner,
+.navbar-inner .container-fluid {
+  background-image: url(image_path('navbar.png'));
+}
+
+.navbar-inverse .nav .active > a {
+  background-color: $black;
+}
+
+.navbar-inner .container-fluid {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.navbar
+.navigation li a {
+  letter-spacing: 1px;
+}
+
+.navbar .gravatar { 
+  @include hero; 
+}
+
+.tooltip {
+  text-shadow: 0px 1px 1px black;
+}
+
+#logo {
+  float: left;
+  margin-right: 1em;
+  font-size: 1.7em;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: -1px;
+  padding-top: 7px;
+  font-weight: bold;
+  line-height: 1;
+  color: darken($linkColor, 5%);
+  @include transitions;
+  &:hover {
+    color: $white;
+  }
+}
+
+/* Mini-Profile Module */
+
+.side-module {
+  border: 1px solid $moduleBorder;
+  @include modules; 
+  @include shadows;
+}
+
+.share-anchor {
+  display: block;
+  text-decoration: none;
+  color: $textGrayLight;
+  cursor: pointer;
+}
+
+.profile-anchor {
+  color: $grayLight;
+  padding-top: 1px;
+  font-size: 11px;
+  margin-left: 1px;
+}
+
+.share-anchor:hover {
+  text-decoration: none;
+  color: $textGrayLight;
+}
+
+.item-anchor,
+.item-anchor:hover {
+  color: $textGray;
+  text-decoration: none;
+}
+
+.side-module-share {
+  padding: 10px 10px 0px 10px;
+  background-color: $outterBody;
+  border-top: 1px solid $moduleBorder;
+  @include modules-bot;
+}
+
+.side-module-share form {
+  line-height: 18px;
+  margin-bottom: 0;
+}
+
+.side-module-share form.active textarea {
+  height: 78px !important;
+  color: $textGrayLight;
+  font-size: 14px;
+}
+
+.side-module-share form.active input {
+  display: block;
+  margin-bottom: 7px;
+  margin-top: -1px;
+}
+
+.side-module-share textarea {
+  color: $textGrayLighter;
+  font-size: 13px;
+  height: 34px !important;
+  padding: 6px 8px 0;
+  @include inline-container;
+}
+
+.mini-profile {
+  font-size: 12px;
+  margin-bottom: 45px;
+  line-height: 16px;
+}
+
+.side-menu {
+  line-height: 16px; 
+}
+
+.side-content { 
+  padding: 12px 0px 0 12px; 
+}
+
+.side-menu .stats { 
+  background: none; 
+}
+
+.profile-name { 
+  font-size: 14px; 
+}
+
+.share-anchor:hover .profile-anchor { 
+  color: $linkColor; 
+}
+
+.side-module-share:hover { 
+  background-color: $moduleGray; 
+}
+
+.side-module-share form input { 
+  display: none; 
+}
+
+/* General tables */
+
+table {
+  clear: both;
+  @include tables-shadow;
+}
+
+thead { 
+  @include footer;
+}
+
+tbody {
+  background-color: $innerBody;
+}
+
+th, td {
+  text-align: center;
+}
+
+td {
+  width: 10%;
+  &:first-child {
+    width: 55%;
+  }
+  &:last-child {
+    width: 100%;
+  }
+}
+
+.center, table .center { 
+  text-align: center; 
+}
+
+.small, table .small {
+  font-size: 12px;
+}
+
+table .valign {
+  padding-top: 15px;
+}
+
+/* User Stats  */
+
+.stats, 
+.share-stats {
+  padding-left: 12px;
+  background: none;
+  overflow: auto;
+  a {
+    font-size: 11px;
+    float: left;
+    padding: 0 10px;
+    border-left: 1px solid $grayLighter;
+    color: gray;
+    line-height: 16px;
+    text-transform: uppercase;
+    &:first-child {
+      padding-left: 0;
+      padding-right: 10px;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: $linkColor;
+    }
+  }
+  strong {
+    display: block;
+    color: $textGray;
+    font-size: 14px;
+  }
+}
+
+.gravatar {
+  float: left;
+  margin-right: 10px;
+  @include gravatars;
+}
+
+.user { 
+  font-weight: bold; 
+}
+
+.username {
+  font-size: 13px;
+  color: $grayLight;
+  font-weight: normal;
+}
+
+.timestamp {
+  font-size: 13px;
+  color: $timestamp;
+  float: right;
+  font-weight: normal;
+}
+
+.users {
+  margin: 0px -14px;
+  li {
+    overflow: auto;
+    padding: 10px 14px;
+    border-top: 1px solid $userBorder;
+    &:last-child {
+      border-bottom: 1px solid $userBorder;
+    }
+  }
+}
+
+.users-follow li {
+  overflow: auto;
+  padding: 10px 14px;
+  padding-left: none;
+  border-top: 1px solid $userBorder;
+  opacity: .9;
+  &:first-child {
+    border-top: none;
+  }
+}
+
+.users li:hover { 
+  background-color: $wellGray; 
+}
+
+.users-follow {
+  margin: 0px; 
+}
+
+.users-follow li:hover { 
+  opacity: 100; 
+}
+
+.stats a:hover strong { 
+  color: $linkColorHover; 
+}
+
+/* Feeds Share Items  */
+
+.well-header,
+.well-bottom {
+  border: 1px solid $moduleBorder;
+  color: $textGrayLight;
+  font-weight: bold;
+  text-align: center;
+  min-height: 17px;
+  padding: 8px;
+}
+
+.well-header {
+  margin-top: 1em;
+  border-bottom-width: 0;
+  @include well-header;
+}
+
+.well-bottom {
+  border-top-width: 0;
+  @include well-bottom;
+}
+
+.well {
+  background-color: $innerBody;
+  border-top-width: 0;
+  border-bottom: 1px solid $moduleBorder;
+  margin: 0;
+  padding: 12px;
+  @include well;
+}
+
+.well-inner-header,
+.modal_header {
+  line-height: 10px;
+  margin-bottom: 4px;
+}
+
+.well-inner .content,
+.modal_content {
+  display: block;
+  line-height: 19px;
+  margin-left: 58px;
+}
+
+.well-footer {
+  font-size: 13px;
+  margin-left: 58px;
+}
+
+.categories {
+  margin-left: 0px;
+}
+
+.well-footer form {
+  display: inline-block;
+  margin-bottom: -6px;
+}
+
+.well:hover { 
+  background-color: $wellGray; 
+}
+
+.well:hover .timestamp,
+.modal-body:hover .timestamp,
+.well:hover .well-footer a, 
+.modal-body:hover .well-footer a,
+.share-actions .btn-link { 
+  color: $linkColorHover; 
+}
+
+.well:hover .well-footer li,
+.well:hover .well-footer-blog li,
+.modal-body:hover .well-footer li, { 
+  opacity: 100; 
+}
+
+/* Inline Links */
+
+.shown {
+  cursor: pointer;
+  color: $grayLight;
+  vertical-align: 5px;
+}
+
+.well-footer .collapse { 
+  padding-left: 10px; 
+}
+
+.share-actions { 
+  display: inline-block; 
+}
+
+.share-actions a { 
+  display: inline; 
+}
+
+.share-actions li {
+  display: inline-block;
+  opacity: 0;
+}
+
+.share-actions .btn-link {
+  vertical-align: 5px;
+  padding: 0;
+  font-size: 13px;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/* Inline Stats */
+
+.share-stats {
+  float: right;
+  overflow: hidden;
+}
+
+.share-stats a {
+  border-left: none;
+  padding-left: 0px;
+  &:first-child {
+    border-left: 1px solid $grayLighter;
+  }
+}
+
+.share-stats strong {
+  display: inline;
+  margin-left: 3px;
+  vertical-align: 3px;
+  font-size: 14px
+}
+
+.inline-share-stats a {
+  color: $statsGray;
+  font-size: 10px;
+  &:first-child {
+    margin-top: 2px;
+    border-left: none;
+    line-height: 4px;
+    margin-right: -10px;
+  }
+}
+
+.inline-share-stats li { 
+  display: inline-block; 
+}
+
+/* Share Item Reply Container */
+
+.inline-share-reply {
+  display: block;
+  padding-top: 5px;
+}
+
+.inline-container, 
+.modal-form {
+  padding: 10px 0 3px 0;
+  float: left;
+  display: block;
+}
+
+.inline-container form, 
+.modal-form form {
+  margin: -15px -11px -10px;
+  padding: 5px;
+}
+
+.inline-container form textarea, 
+.modal-form form textarea {
+  color: $textGrayLighter;
+  font-size: 13px;
+  line-height: 18px;
+  height: 38px !important;
+  width: 350px;
+  padding: 9px;
+  @include inline-container;
+}
+
+.inline-container form.active textarea {
+  height: 78px !important;
+  color: $textGrayLight;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.inline-container form.active input {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.inline-container form input { 
+  display: none; 
+}
+
+/* Modal Config */
+
+.modal-form form textarea {
+  color: $textGrayLight;
+  font-size: 14px;
+  height: 78px !important;
+}
+
+.modal-form form input {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.modal {
+  background: none repeat scroll 0% 0% transparent;
+  overflow: visible;
+  border: 0;
+  box-shadow: none;
+  outline: none;
+}
+
+.modal-content {
+  position: relative;
+  background-color: $white;
+  @include modal;
+}
+
+.modal-header {
+  cursor: default;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  background-color: $userBorder;
+  border-bottom: 1px solid $borderDarker;
+  @include modal-header;
+}
+
+.modal-header .modal-title {
+  cursor: move;
+  width: 75%;
+  margin: 0px auto;
+  font-weight: bold;
+  line-height: 18px;
+  text-align: center;
+  text-shadow: 0px 1px 1px $white;
+}
+
+#likes {
+  cursor: default;
+  background-color: $mainGray;
+  border-top: 1px solid $borderDarker;
+  min-height: 40px;
+  a { 
+    margin-top: 10px; 
+  }
+  strong { 
+    font-size: 16px; 
+  }
+  .gravatar { 
+    opacity: .8; 
+    &:hover { 
+      opacity: 1; 
+    } 
+  }
+  &:hover {
+    background-color: $userBorder; 
+    strong { 
+      color: $red; 
+    }
+  }
+}
+
+.modal-body {
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.modal-backdrop, 
+.modal-backdrop.fade.in { 
+  opacity: .4; 
+}
+
+.modal-header button.close { 
+  margin-top: -2px; 
+}
+
+.modal-body:hover { 
+  background-color: $wellGray; 
+}
+
+.username_modal { 
+  display: block;
+}
+
+.modal-footer {
+  cursor: move;
+}
+
+.users_modal { 
+  margin: -.5em 0 -.8em;
+}
+
+.users_modal li:hover { 
+  background-color: $outterBody;
+}
+
+.modal_stats {
+  margin-bottom: -10px;
+}
+
+.modal_likes { 
+  font-size: 16px; 
+}
+
+#modal_list { 
+  float: right; 
+}
+
+/* user profiles */
+
+.profile {
+  @include profiles; 
+}
+
+.profile,
+.microposts-profile {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+  line-height: 16px;
+}
+
+.profile-header {
+  background-color: $moduleGray;
+  padding: 12px;
+  line-height: 16px;
+  @include profile-header;
+}
+
+.profile-header .gravatar { 
+  margin-bottom: 3px; 
+}
+
+.profile-inner {
+  line-height: 16px;
+  float: left;
+  width: 54%;
+  margin: 0 0 0 12px;
+  h2 {
+    text-align: left;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 24px;
+    color: $grayLarge;
+    margin-bottom: 5px;
+  }
+}
+
+.name {
+  direction: ltr;
+  .fullname {
+    letter-spacing: 0;
+    font-size: 30px;
+    line-height: 1;
+    margin-bottom: 2px;
+    font-weight: bold;
+    color: $textGray;
+  }
+}
+
+.bio,
+.title {
+  margin-bottom: 0px;
+  font-size: 13px;
+  font-style: italic;
+  color: $grayLarge;
+}
+
+.location {
+  display: block;
+  padding-top: 8px;
+  font-size: 13px;
+  line-height: 18px;
+  color: $grayLarge;
+}
+
+
+/* Profile Stats */
+
+.actions {
+  position: relative;
+  float: right;
+  line-height: 16px;
+}
+
+.actions .stats {
+  max-height: 300px;
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+.actions .stats a {
+  float: none;
+  display: block;
+  border-width: 1px 0px 0px;
+  border-style: solid none none;
+  border-color: $border;
+  color: $statsGray;
+  font-size: 11px;
+  line-height: 16px;
+  text-transform: uppercase;
+  &:hover {
+    color: $linkColor;
+  }
+}
+
+.actions .stats a strong {
+  color: $textGray;
+  font-size: 14px;
+}
+
+.actions .stats li {
+  display: inline;
+  line-height: 16px;
+}
+
+.actions .stats li a {
+  padding: 6px 12px 6px 0px;
+  border-width: 1px 0px 0px;
+  border-style: solid none none;
+  border-color: $border
+}
+
+.actions .stats:first-child a { 
+  border-left: none; 
+}
+
+.actions .stats a:hover strong {
+  color: $linkColorHover;
+}
+
+.actions .stats strong { 
+  display: inline; 
+}
+
+.actions .stats li:first-child a {
+  border-top: none;
+}
+
+.actions .stats li:last-child a { 
+  padding-bottom: 0px;
+}
+
+.nav-tabs { 
+  margin-bottom:0;
+}
+
+.nav-tabs > .active > a { 
+  background-color: $innerBody; 
+}
+
+/* text formatting */
+
+.format { 
+  margin-bottom: .4em;
+  line-height: 24px;
+}
+
+.format p {
+  text-indent: 2em;
+}
+
+.format h1 {
+  margin-bottom: 5px;
+  font: bold 18px/22px Georgia, "Times New Roman", serif;
+  color: $grayLarge;
+}
+
+.format .indent {
+  display: inline-block;
+  margin-left: 2em;
+}
+
+/* alert messages */
+
+#alert-notice {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+#error_explanation {
+  color: $red;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
+}
+
+#inline {
+  margin-left: -10px;
+  margin-bottom: 5px;
+}
+
+#alert-inline {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.field_with_errors {
+  @extend .control-group;
+  @extend .error;
+}
+
+/* debugging for development */
+
+.debug_dump {
+  clear: both;
+  width: 100%;
+  margin-top: 3em;
+  @include paddings;
+  @include forms;
+}
+
+/* Responsive styles */
+
+@media (max-width: 980px) {
+  .navbar-text.pull-right {
+    float: none;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+  .page-wrapper,
+  .footer {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+}
+ 
+@media (max-width: 767px) {
+  body {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

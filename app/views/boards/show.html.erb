@@ -1,0 +1,21 @@
+<h2 class="lead"> <%= link_to @board.name, @board %> </h2>
+
+<span class="pull-right">
+  <%= link_to "New Topic", new_board_topic_path(@board), 
+        class: "btn btn-primary", 
+        style: "margin-bottom: 5px;" %>
+</span>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Topics</th>
+      <th class="center">Replies</th>
+      <th class="center">Views</th>
+      <th>Latest Post</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @topics unless @topics.empty? %>
+  </tbody>
+</table>

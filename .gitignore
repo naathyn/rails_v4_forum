@@ -1,0 +1,13 @@
+/.bundle
+/vendor/bundle/
+/db/*.sqlite3
+
+/log/*
+/tmp/*
+/doc/*
+
+**.swp
+*~
+*.save
+.project
+.idea

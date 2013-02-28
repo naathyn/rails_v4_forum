@@ -5,7 +5,7 @@
   </td>
   <td class="center small valign"><%= board.topics.count %></td>
   <td class="center small valign"><%= board.posts %></td>
-  <td class="small">
+  <td id="latest_post" class="small">
     <% unless board.topics.empty? %>
       <div class="user">
         <%= link_to board.latest_topic.title, topic_path([board, :topics, board.latest_topic]) %>
@@ -14,7 +14,7 @@
       <span class="user">
         <%= link_to board.latest_post.user.username, board.latest_post.user %>
       </span> <br />
-        » <%= time_ago_in_words(board.latest_post.updated_at) %> ago.
+      » <%= time_ago_in_words(board.latest_post.updated_at) %> ago.
     <% end %>
   </td>
 </tr>

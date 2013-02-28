@@ -14,7 +14,7 @@
       <span class="user">
         <%= link_to board.latest_post.user.username, board.latest_post.user %>
       </span> <br />
-      » <%= time_ago_in_words(board.active_post.updated_at) %> ago.
+        » <%= time_ago_in_words(board.latest_post.updated_at) %> ago.
     <% end %>
   </td>
 </tr>

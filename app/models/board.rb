@@ -19,14 +19,10 @@ class Board < ActiveRecord::Base
   end
 
   def latest_post
-    if comments.any?
+    if latest_topic.comments.any?
       latest_comment
     else
       latest_topic
     end
-  end
-
-  def active_post
-    [latest_topic, latest_comment].first
   end
 end

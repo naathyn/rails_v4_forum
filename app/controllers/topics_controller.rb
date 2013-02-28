@@ -1,6 +1,7 @@
 class TopicsController < ApplicationController
   before_filter :signed_in_user
   before_action :set_board, only: [:show, :create, :destroy]
+  before_filter :record_timestamps, only: :create
   before_filter :increment_view_count!, only: :show
 
   def show
@@ -44,9 +45,15 @@ private
 
 protected
 
+  # Currently recording timestamps on a
+  # seperate callback to prevent breaking
+
+  def record_timestamps
+    Topic.record_timestamps = true
+  end
+
   def increment_view_count!
-    @topic = @board.topics.find(params[:id])
     Topic.record_timestamps = false
-    @topic.increment!(:views)
+    Topic.find(params[:id]).increment!(:views)
   end
 end
